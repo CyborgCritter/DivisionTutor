@@ -30,7 +30,8 @@ namespace DivisionTutor
 
                 do
                 {
-                    maximum = GetMaxOrMin("maximum");
+                    //Add 1 to the users entry, to ensure the users maximum is inclusive.
+                    maximum = GetMaxOrMin("maximum") + 1;
 
                     if (maximum <= minimum)
                     {
@@ -40,6 +41,9 @@ namespace DivisionTutor
 
                 GetDivisionProblem(minimum, maximum);
             } while (GetUserContinue(askIfUserWantContinue));
+
+            //Add lines to the end, to make it look neat in the case of running in debug mode.
+            Console.WriteLine("\n\n");
         }
 
         static int GetMaxOrMin(string maxOrMin)
@@ -121,7 +125,7 @@ namespace DivisionTutor
                 if (!isValidEntry || quotient != problemSolution)
                 {
                     Console.WriteLine("\nI am sorry, that is not correct.");
-                    tryAgain = GetUserContinue("Would you like to try again?\nPress 'y' to try again, or 'n' to quit this problem. ");
+                    tryAgain = GetUserContinue("Would you like to try again?\n\nPress 'y' to try again, or 'n' to quit this problem. ");
                     myHeader.ClearAndPrintHeader();
                 }
 
